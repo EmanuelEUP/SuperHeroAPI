@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+import HeroesContextProvider from './context/HeroesContext';
+import HomePage from './pages/Home/HomePage.component';
+import Header from './components/Common/Header/Header.component';
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+
+  <BrowserRouter>
+    <Header />
+
+    <Container maxWidth="lg" className="main-container">
+
+      <Switch>
+        <Route exact path='/'>
+
+        <HeroesContextProvider>
+        <HomePage />
+        </HeroesContextProvider>
+        
+        </Route>
+      </Switch>
+
+    </Container>
+ 
+  </BrowserRouter>
+
+)
 
 export default App;
+
+
+ 
